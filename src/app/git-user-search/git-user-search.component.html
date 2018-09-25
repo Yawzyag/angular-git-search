@@ -1,0 +1,41 @@
+<h3>{{title}} - {{displayQuery}}</h3>
+<input name="query" placeholder="Enter Search Here" [(ngModel)]="searchQuery" />
+<button (click)="sendQuery()">Submit</button>
+
+<div *ngIf="userSearchResults; then count; else elseBlock">
+
+</div>
+
+<ng-template #count>
+  <div *ngIf="errorSearch !== false; then content; else noResults">
+
+  </div>
+</ng-template>
+
+<ng-template #content>
+  <h3 class="total">
+    Total users: {{ userSearchResults.total_count }}
+  </h3>
+  <ul class="list">
+    <li [ngClass]="{'background-silver': i % 2 === 0, 'background-white': i % 2 !== 0}" class="list_item" *ngFor="let user of userSearchResults.items; index as i;">
+      <a class="link" [href]="user.html_url">
+        <img class="avatar" [src]="user.avatar_url" [alt]="user.id">
+        <h4 class="title">{{ user.login }}
+          <hr>
+          <small> <em> Score {{ user.score }} </em></small>
+        </h4>
+      </a>
+      <p>Organizations {{ user.organizations_url.length }}</p>
+    </li>
+  </ul>
+</ng-template>
+
+<ng-template #elseBlock> <br> <br> Loading Results...
+  <hr>
+</ng-template>
+
+
+
+<ng-template #noResults> <br> <br> No Results!, Try Again
+  <hr>
+</ng-template>

@@ -1,0 +1,59 @@
+.total {
+  font-size: 1.5rem;
+}
+.list {
+  list-style-type: none;
+  margin: 0.1rem auto;
+  padding: 0 1rem;
+}
+.list_item {
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  height: 25vh;
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+  padding-left: 1vw;
+}
+.avatar {
+  height: 22vh;
+  float: left;
+}
+.title {
+  font-size: 1.4rem;
+  padding: 0.3rem 0;
+  margin: 0.1rem auto;
+}
+.description {
+  font-size: 1.1rem;
+  padding: 0.3rem 0;
+  margin: 0.3rem auto;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.background-silver {
+  background-color: #333;
+  color: #fff;
+}
+
+.background-silver .link {
+  color: #fff;
+}
+
+.background-white {
+  background-color: rgb(153, 152, 152);
+  color: #2e2e2e;
+}
+
+.background-white .link {
+  color: rgb(46, 46, 46);
+}
+
+.background-silver .link:hover {
+  color: aqua;
+}
+
+.background-white .link:hover {
+  color: darkslateblue;
+}

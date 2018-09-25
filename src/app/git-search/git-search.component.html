@@ -1,0 +1,41 @@
+<h3>{{title}} - {{displayQuery}}</h3>
+<input name="query" placeholder="Enter Search Here" [(ngModel)]="searchQuery" />
+<button (click)="sendQuery()">Submit</button>
+
+<div *ngIf="searchResults; then count; else elseBlock">
+
+</div>
+
+<ng-template #count>
+  <div *ngIf="errorSearch !== false; then content; else noResults">
+
+  </div>
+</ng-template>
+
+
+<ng-template #content>
+  <h3 class="total">Total Results {{ searchResults.total_count }}</h3>
+  <ul class="list">
+    <li [ngClass]="{'background-silver': i % 2 === 0, 'background-white': i % 2 !== 0}" class="list_item" *ngFor="let result of searchResults.items; index as i;">
+      <a class="link" [href]="result.html_url">
+        <img class="avatar" [src]="result.owner.avatar_url" />
+        <h4 class="title">{{result.name}}
+          <small> <em> By {{result.owner.login | uppercase}} </em></small>
+        </h4>
+      </a>
+      <p class="description"> {{result.description}}</p>
+      <p> Created On: {{result.created_at | date:'fullDate'}} </p>
+    </li>
+  </ul>
+</ng-template>
+
+
+<ng-template #elseBlock> <br> <br> Loading Results...
+  <hr>
+</ng-template>
+
+
+
+<ng-template #noResults> <br> <br> No Results!, Try Again
+  <hr>
+</ng-template>
